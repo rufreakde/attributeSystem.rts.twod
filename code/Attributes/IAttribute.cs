@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace attributeSystem.rts.twod
 {
-    public interface IAttribute<T>
+    [System.Serializable]
+    public abstract class IamAttribute : ScriptableObject
     {
-        void UpdateLogic(T data);
+        public int testParent = 1;
+        public abstract void UpdateLogic();
     }
 
 }
