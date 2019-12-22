@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace attributeSystem.rts.twod
 {
-    [CreateAssetMenu(fileName = "WalkAttributeData", menuName = "ScriptableObjects/Attribut/Walk", order = 1)]
+    [CreateAssetMenu(fileName = "WalkAttributeDefault", menuName = "ScriptableObjects/Attribut/Walk", order = 1)]
     public class Walk : IamAttribute, IJsonSerialize<Walk>, IJsonDeserialize<Walk>
     {
         public string testChild = "works";
@@ -34,9 +34,11 @@ namespace attributeSystem.rts.twod
             this.Serialize(this);
         }
 
-        public override void UpdateLogic()
+        public override AttributeState UpdateLogic(AttributesContainer _State)
         {
+            // here is the logic
             Debug.Log("Update logic of Attribute Walk");
+            return AttributeState.Done;
         }
     }
 }
