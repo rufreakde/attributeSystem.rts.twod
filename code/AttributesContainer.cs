@@ -67,48 +67,79 @@ namespace attributeSystem.rts.twod
         [System.Serializable]
         public class Stats
         {
-            public Basis basis = new Basis();
-            public FlatBonus flatBonus = new FlatBonus();
-            public PercentageBonus percentageBonus = new PercentageBonus();
+            public Basis basis;
+            public FlatBonus flatBonus;
+            public PercentageBonus percentageBonus;
 
-            public ArmorTypes ArmorType = ArmorTypes.Infantry;
-            public DamageTypes DamageType = DamageTypes.Slash;
+            public ArmorTypes ArmorType;
+            public DamageTypes DamageType;
 
-            public float max_Health { get => (basis.Health + flatBonus.Health) * percentageBonus.Health; }
-            public float max_Strength { get => (basis.Strength + flatBonus.Strength) * percentageBonus.Strength; }
-            public float max_HealthRegen { get => (basis.HealthRegen + flatBonus.HealthRegen) * percentageBonus.HealthRegen; }
-            public float max_Mana { get => (basis.Mana + flatBonus.Mana) * percentageBonus.Mana; }
-            public float max_Magic { get => (basis.Magic + flatBonus.Magic) * percentageBonus.Magic; }
-            public float max_Intelligence { get => (basis.Intelligence + flatBonus.Intelligence) * percentageBonus.Intelligence; }
-            public float max_ManaRegen { get => (basis.ManaRegen + flatBonus.ManaRegen) * percentageBonus.ManaRegen; }
-            public float max_Rage { get => (basis.Rage + flatBonus.Rage) * percentageBonus.Rage; }
-            public float max_Attack { get => (basis.Attack + flatBonus.Attack) * percentageBonus.Attack; }
-            public float max_Energy { get => (basis.Energy + flatBonus.Energy) * percentageBonus.Energy; }
-            public float max_WalkSpeed { get => (basis.WalkSpeed + flatBonus.WalkSpeed) * percentageBonus.WalkSpeed; }
-            public float max_RunSpeed { get => (basis.RunSpeed + flatBonus.RunSpeed) * percentageBonus.RunSpeed; }
-            public float max_Dexterity { get => (basis.Dexterity + flatBonus.Dexterity) * percentageBonus.Dexterity; }
-            public float max_Armor { get => (basis.Armor + flatBonus.Armor) * percentageBonus.Armor; }
-            public float max_MagicResistence { get => (basis.MagicResistence + flatBonus.MagicResistence) * percentageBonus.MagicResistence; }
-        }
+            public uint current_Health;
+            public uint current_Strength;
+            public uint current_HealthRegen;
+            public uint current_Mana;
+            public uint current_Magic;
+            public uint current_Intelligence;
+            public uint current_ManaRegen;
+            public uint current_Rage;
+            public uint current_Attack;
+            public uint current_Energy;
+            public uint current_WalkSpeed;
+            public uint current_RunSpeed;
+            public uint current_Dexterity;
+            public uint current_Armor;
+            public uint current_MagicResistence;
 
-        [System.Serializable]
-        public class FlatBonus
-        {
-            public uint Health = 0;
-            public uint Strength = 0;
-            public uint HealthRegen = 0;
-            public uint Mana = 0;
-            public uint Magic = 0;
-            public uint Intelligence = 0;
-            public uint ManaRegen = 0;
-            public uint Rage = 0;
-            public uint Attack = 0;
-            public uint Energy = 0;
-            public uint WalkSpeed = 0;
-            public uint RunSpeed = 0;
-            public uint Dexterity = 0;
-            public uint Armor = 0;
-            public uint MagicResistence = 0;
+            public Stats(Basis _BasisStats, FlatBonus _FlatBoni, PercentageBonus _PercentageBoni, ArmorTypes _ArmorType, DamageTypes _DamageType)
+            {
+                basis = _BasisStats;
+                flatBonus = _FlatBoni;
+                percentageBonus = _PercentageBoni;
+
+                ArmorType = _ArmorType;
+                DamageType = _DamageType;
+
+                this.current_Health = max_Health;
+                this.current_Strength = max_Strength;
+                this.current_HealthRegen = max_HealthRegen;
+                this.current_Mana = max_Mana;
+                this.current_Magic = max_Magic;
+                this.current_Intelligence = max_Intelligence;
+                this.current_ManaRegen = max_ManaRegen;
+                this.current_Rage = max_Rage;
+                this.current_Attack = max_Attack;
+                this.current_Energy = max_Energy;
+                this.current_WalkSpeed = max_WalkSpeed;
+                this.current_RunSpeed = max_RunSpeed;
+                this.current_Dexterity = max_Dexterity;
+                this.current_Armor = max_Armor;
+                this.current_MagicResistence = max_MagicResistence;
+            }
+            public Stats() : this(new Basis(), new FlatBonus(), new PercentageBonus(), ArmorTypes.Infantry, DamageTypes.Slash)
+            {
+
+            }
+
+            public Stats(Basis _BasisStats, ArmorTypes _ArmorType, DamageTypes _DamageType) : this(_BasisStats, new FlatBonus(), new PercentageBonus(), _ArmorType, _DamageType)
+            {
+
+            }
+
+            public uint max_Health { get => (uint)((basis.Health + flatBonus.Health) * percentageBonus.Health); }
+            public uint max_Strength { get => (uint)((basis.Strength + flatBonus.Strength) * percentageBonus.Strength); }
+            public uint max_HealthRegen { get => (uint)((basis.HealthRegen + flatBonus.HealthRegen) * percentageBonus.HealthRegen); }
+            public uint max_Mana { get => (uint)((basis.Mana + flatBonus.Mana) * percentageBonus.Mana); }
+            public uint max_Magic { get => (uint)((basis.Magic + flatBonus.Magic) * percentageBonus.Magic); }
+            public uint max_Intelligence { get => (uint)((basis.Intelligence + flatBonus.Intelligence) * percentageBonus.Intelligence); }
+            public uint max_ManaRegen { get => (uint)((basis.ManaRegen + flatBonus.ManaRegen) * percentageBonus.ManaRegen); }
+            public uint max_Rage { get => (uint)((basis.Rage + flatBonus.Rage) * percentageBonus.Rage); }
+            public uint max_Attack { get => (uint)((basis.Attack + flatBonus.Attack) * percentageBonus.Attack); }
+            public uint max_Energy { get => (uint)((basis.Energy + flatBonus.Energy) * percentageBonus.Energy); }
+            public uint max_WalkSpeed { get => (uint)((basis.WalkSpeed + flatBonus.WalkSpeed) * percentageBonus.WalkSpeed); }
+            public uint max_RunSpeed { get => (uint)((basis.RunSpeed + flatBonus.RunSpeed) * percentageBonus.RunSpeed); }
+            public uint max_Dexterity { get => (uint)((basis.Dexterity + flatBonus.Dexterity) * percentageBonus.Dexterity); }
+            public uint max_Armor { get => (uint)((basis.Armor + flatBonus.Armor) * percentageBonus.Armor); }
+            public uint max_MagicResistence { get => (uint)((basis.MagicResistence + flatBonus.MagicResistence) * percentageBonus.MagicResistence); }
         }
 
         [System.Serializable]
@@ -129,36 +160,152 @@ namespace attributeSystem.rts.twod
             public uint Dexterity = 0;
             public uint Armor = 0;
             public uint MagicResistence = 0;
+
+            public Basis(uint _Health, uint _Strength, uint _HealthRegen, uint _Mana, uint _Magic,
+                uint _Intelligence, uint _ManaRegen, uint _Rage, uint _Attack, uint _Energy,
+                uint _WalkSpeed, uint _RunSpeed, uint _Dexterity, uint _Armor, uint _MagicResistence)
+            {
+                this.Health = _Health;
+                this.Strength = _Strength;
+                this.HealthRegen = _HealthRegen;
+                this.Mana = _Mana;
+                this.Magic = _Magic;
+                this.Intelligence = _Intelligence;
+                this.ManaRegen = _ManaRegen;
+                this.Rage = _Rage;
+                this.Attack = _Attack;
+                this.Energy = _Energy;
+                this.WalkSpeed = _WalkSpeed;
+                this.RunSpeed = _RunSpeed;
+                this.Dexterity = _Dexterity;
+                this.Armor = _Armor;
+                this.MagicResistence = _MagicResistence;
+            }
+
+            public Basis() : this(1000, 5, 0, 0, 0, 5, 0, 0, 5, 0, 200, 500, 5, 0, 0)
+            {
+
+            }
+
+            public Basis(uint _Strength, uint _Intelligence, uint _Dexterity) : this(1000, _Strength, 0, 0, 0, _Intelligence, 0, 0, 5, 0, 200, 500, _Dexterity, 0, 0)
+            {
+
+            }
         }
+
+        [System.Serializable]
+        public class FlatBonus
+        {
+            Dictionary<string, int> health;
+            Dictionary<string, int> strength;
+            Dictionary<string, int> healthRegen;
+            Dictionary<string, int> mana;
+            Dictionary<string, int> magic;
+            Dictionary<string, int> intelligence;
+            Dictionary<string, int> manaRegen;
+            Dictionary<string, int> rage;
+            Dictionary<string, int> attack;
+            Dictionary<string, int> energy;
+            Dictionary<string, int> walkSpeed;
+            Dictionary<string, int> runSpeed;
+            Dictionary<string, int> dexterity;
+            Dictionary<string, int> armor;
+            Dictionary<string, int> magicResistence;
+
+            public FlatBonus()
+            {
+                this.health = new Dictionary<string, int>();
+                this.strength = new Dictionary<string, int>();
+                this.healthRegen = new Dictionary<string, int>();
+                this.mana = new Dictionary<string, int>();
+                this.magic = new Dictionary<string, int>();
+                this.intelligence = new Dictionary<string,int>();
+                this.manaRegen = new Dictionary<string, int>();
+                this.rage = new Dictionary<string, int>();
+                this.attack = new Dictionary<string, int>();
+                this.energy = new Dictionary<string, int>();
+                this.walkSpeed = new Dictionary<string, int>();
+                this.runSpeed = new Dictionary<string, int>();
+                this.dexterity = new Dictionary<string, int>();
+                this.armor = new Dictionary<string, int>();
+                this.magicResistence = new Dictionary<string, int>();
+            }
+
+            public int Health { get => sumOfBoni(health); }
+            public int Strength { get => sumOfBoni(strength); }
+            public int HealthRegen { get => sumOfBoni(healthRegen); }
+            public int Mana { get => sumOfBoni(mana); }
+            public int Magic { get => sumOfBoni(magic); }
+            public int Intelligence { get => sumOfBoni(intelligence); }
+            public int ManaRegen { get => sumOfBoni(manaRegen); }
+            public int Rage { get => sumOfBoni(rage); }
+            public int Attack { get => sumOfBoni(attack); }
+            public int Energy { get => sumOfBoni(energy); }
+            public int WalkSpeed { get => sumOfBoni(walkSpeed); }
+            public int RunSpeed { get => sumOfBoni(runSpeed); }
+            public int Dexterity { get => sumOfBoni(dexterity); }
+            public int Armor { get => sumOfBoni(armor); }
+            public int MagicResistence { get => sumOfBoni(magicResistence); }
+
+
+            int sumOfBoni(Dictionary<string, int> _BonusValues)
+            {
+                int result = 0;
+                foreach (KeyValuePair<string, int> value in _BonusValues)
+                {
+                    result += value.Value;
+                }
+                return result;
+            }
+        }
+
 
         [System.Serializable]
         public class PercentageBonus
         {
-            Dictionary<string, float> health = new Dictionary<string, float>();
-            Dictionary<string, float> strength = new Dictionary<string, float>();
-            Dictionary<string, float> healthRegen = new Dictionary<string, float>();
+            Dictionary<string, float> health;
+            Dictionary<string, float> strength;
+            Dictionary<string, float> healthRegen;
 
-            Dictionary<string, float> mana = new Dictionary<string, float>();
-            Dictionary<string, float> intelligence = new Dictionary<string, float>();
-            Dictionary<string, float> manaRegen = new Dictionary<string, float>();
-            Dictionary<string, float> magic = new Dictionary<string, float>();
+            Dictionary<string, float> mana;
+            Dictionary<string, float> intelligence;
+            Dictionary<string, float> manaRegen;
+            Dictionary<string, float> magic;
 
-            Dictionary<string, float> rage = new Dictionary<string, float>();
-            Dictionary<string, float> attack = new Dictionary<string, float>();
+            Dictionary<string, float> rage;
+            Dictionary<string, float> attack;
 
-            Dictionary<string, float> energy = new Dictionary<string, float>();
-            Dictionary<string, float> walkSpeed = new Dictionary<string, float>();
-            Dictionary<string, float> runSpeed = new Dictionary<string, float>();
-            Dictionary<string, float> dexterity = new Dictionary<string, float>();
+            Dictionary<string, float> energy;
+            Dictionary<string, float> walkSpeed;
+            Dictionary<string, float> runSpeed;
+            Dictionary<string, float> dexterity;
 
-            Dictionary<string, float> armor = new Dictionary<string, float>();
-            Dictionary<string, float> magicResistence = new Dictionary<string, float>();
+            Dictionary<string, float> armor;
+            Dictionary<string, float> magicResistence;
+
+            public PercentageBonus()
+            {
+                this.health = new Dictionary<string, float>();
+                this.strength = new Dictionary<string, float>();
+                this.healthRegen = new Dictionary<string, float>();
+                this.mana = new Dictionary<string, float>();
+                this.magic = new Dictionary<string, float>();
+                this.intelligence = new Dictionary<string, float>();
+                this.manaRegen = new Dictionary<string, float>();
+                this.rage = new Dictionary<string, float>();
+                this.attack = new Dictionary<string, float>();
+                this.energy = new Dictionary<string, float>();
+                this.walkSpeed = new Dictionary<string, float>();
+                this.runSpeed = new Dictionary<string, float>();
+                this.dexterity = new Dictionary<string, float>();
+                this.armor = new Dictionary<string, float>();
+                this.magicResistence = new Dictionary<string, float>();
+            }
 
             public float Health { get => concatinatePercentageBoni(health); }
             public float Strength { get => concatinatePercentageBoni(strength);}
             public float HealthRegen { get => concatinatePercentageBoni(healthRegen);}
             public float Mana { get => concatinatePercentageBoni(mana); }
-
             public float Magic { get => concatinatePercentageBoni(magic); }
             public float Intelligence { get => concatinatePercentageBoni(intelligence);}
             public float ManaRegen { get => concatinatePercentageBoni(manaRegen);}
